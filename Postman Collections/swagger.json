@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "8ec63fc0-1c9f-49e6-aed6-092c6112b5b5",
+		"name": "Swagger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign-UP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 201\",function(){\r",
+							"pm.response.to.have.status(201);});\r",
+							"/*var em=pm.variables.get(\"email\");\r",
+							" var pwd=pm.variables.get(\"password\");\r",
+							"pm.test(\"check email\"+em,function(){\r",
+							"var jasonData=pm.response.json();\r",
+							"pm.expect(jsonData.email).to.eql(em);});\r",
+							"pm.test(\"Check password\"+pwd,function(){\r",
+							"    var jsonData=pm.response.json();\r",
+							"    pm.expect(jsonData.password).to.eql(pwd);});\r",
+							"*/"
+						],
+						"type": "text/javascript",
+						"id": "b82ded82-1c67-4fa0-8a98-8c962e30e691"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"email\",data.email);\r",
+							"pm.environment.set(\"password\",data.password);\r",
+							"/*var list=pm.info.iterationCount;\r",
+							"console.log(list);\r",
+							"pm.environment.set(\"Total Records\",list);*/"
+						],
+						"type": "text/javascript",
+						"id": "c8e4a9e4-cde4-4567-bcd7-5de471baa17f"
+					}
+				}
+			],
+			"_postman_id": "43ea9de8-3ec0-4bb2-938a-f1aec3c1afd0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"{{email}}\",\r\n\t\"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://{{Base URI}}/user/signup"
+			},
+			"response": []
+		}
+	]
+}
